@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+// import ApiContext from "./../contexts/apiContext";
 
+export const ApiContext = React.createContext();
 const ComplexHOC = (props) => {
   const [apiResponse, setApiResponse] = useState(null);
 
@@ -7,7 +9,7 @@ const ComplexHOC = (props) => {
   const makeApiCall = async (url) => {
     const resp = await fetch(url);
     const data = await resp.json();
-    console.log("data", data);
+    // console.log("data", data);
     setApiResponse(data);
   };
 
@@ -16,9 +18,9 @@ const ComplexHOC = (props) => {
   }, [props.url]);
 
   // create clone and pass it the needed data
-  const ClonedChildren = React.cloneElement(props.children, { apiResponse });
+  // const ClonedChildren = React.cloneElement(props.children, { apiResponse });
 
-  return <div className="hoc">{ClonedChildren}</div>;
+  return <ApiContext.Provider value={apiResponse}>{props.children}</ApiContext.Provider>;
 };
 
 export default ComplexHOC;

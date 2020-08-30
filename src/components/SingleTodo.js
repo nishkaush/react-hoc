@@ -1,20 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import ComplexHOC from "./ComplexHOC";
+// import ApiContext from "./../contexts/apiContext";
+import { ApiContext } from "./ComplexHOC";
 
-const WrapperComp = (props) => {
-  console.log("props", props);
+const WrapperComp = () => {
+  const data = useContext(ApiContext);
+  console.log("context data", data);
   return (
     <div className="bodyText">
-      {props.apiResponse && (
+      {data && (
         <p>
-          UserID - {props.apiResponse.userId} & Title - {props.apiResponse.title}
+          UserID - {data.userId} & Title - {data.title}
         </p>
       )}
     </div>
   );
 };
 
-const SingleTodo = (props) => {
+const SingleTodo = () => {
   return (
     <ComplexHOC url="https://jsonplaceholder.typicode.com/todos/1">
       <WrapperComp />
