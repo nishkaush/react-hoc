@@ -5,7 +5,7 @@ import { ApiContext } from "./ComplexHOC";
 
 const WrapperComp = () => {
   const data = useContext(ApiContext);
-  console.log("context data", data);
+  // console.log("context data", data);
   return (
     <div className="bodyText">
       {data && (

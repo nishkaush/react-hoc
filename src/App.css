@@ -1,3 +1,16 @@
 .App {
   text-align: center;
+  position: relative;
+}
+
+button {
+  margin: 2%;
+  width: 200px;
+  height: 60px;
+  border-radius: 2px;
+  background: royalblue;
+  color: white;
+  font-size: 1.2em;
+  border: none;
+  cursor: pointer;
 }
